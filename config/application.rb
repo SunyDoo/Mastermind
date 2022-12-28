@@ -20,9 +20,9 @@ Bundler.require(*Rails.groups)
 
 module Mastermind
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 6.1
 
+    # This is set in apps generated with the --api flag, and removes session/cookie middleware
     config.api_only = true
 
     # ▾ Must add these lines! ▾
