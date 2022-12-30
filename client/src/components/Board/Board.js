@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import ColorBoard from "../ColorBoard/ColorBoard";
 import Peg from "../Peg/Peg";
 import "./Board.css";
 
 function Board() {
+  const [guess, setGuess] = useState([])
+  const [currentColor, setCurrentColor] = useState("red")
+
+
+
   return (
     <div className="game-wrapper">
         <div className="color-board">
           <h2>Select Color</h2>
-          <ColorBoard />
+          <ColorBoard handleClick={setCurrentColor}/>
+          <p>Selected Color: <div className="select-box"><div className={currentColor}></div></div></p>
           <p>Attempts remaining: </p>
         </div>
         <div className="game-board">
