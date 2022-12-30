@@ -1,5 +1,5 @@
 import React from "react";
-import "./Peg.css"
+import "./Peg.css";
 function Peg({ props }) {
   return (
     <div className="guess-board">
@@ -7,6 +7,13 @@ function Peg({ props }) {
       <div className="white"></div>
       <div className="white"></div>
       <div className="white"></div>
+      <button>Check</button>
+      <div className="clue-container">
+        <div className="white"></div>
+        <div className="white"></div>
+        <div className="white"></div>
+        <div className="white"></div>
+      </div>
     </div>
   );
 }
