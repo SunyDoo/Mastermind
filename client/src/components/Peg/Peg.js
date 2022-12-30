@@ -1,9 +1,12 @@
 import React from "react";
-
+import "./Peg.css"
 function Peg({ props }) {
   return (
-    <div className="peg">
-<h1>game</h1>
+    <div className="guess-board">
+      <div className="white"></div>
+      <div className="white"></div>
+      <div className="white"></div>
+      <div className="white"></div>
     </div>
   );
 }

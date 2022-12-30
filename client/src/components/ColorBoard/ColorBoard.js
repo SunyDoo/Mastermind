@@ -10,7 +10,7 @@ const ColorBoard = () => {
       <div className="yellow"></div>
       <div className="orange"></div>
       <div className="purple"></div>
-      <div className="black"></div>
+      <div className="gray"></div>
     </div>
   );
 };

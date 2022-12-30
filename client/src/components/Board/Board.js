@@ -9,8 +9,19 @@ function Board() {
         <div className="color-board">
           <h2>Select Color</h2>
           <ColorBoard />
+          <p>Attempts remaining: </p>
         </div>
         <div className="game-board">
+         <h1>MasterMind</h1>
+          <Peg />
+          <Peg />
+          <Peg />
+          <Peg />
+          <Peg />
+          <Peg />
+          <Peg />
+          <Peg />
+          <Peg />
           <Peg />
         </div>
     </div>
