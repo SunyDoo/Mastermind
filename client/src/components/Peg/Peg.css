@@ -1,0 +1,31 @@
+.peg {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+.peg.red {
+  background-color: red;
+}
+
+.peg.green {
+  background-color: green;
+}
+
+.peg.blue {
+  background-color: blue;
+}
+
+.peg.yellow {
+  background-color: yellow;
+}
+
+.peg.orange {
+  background-color: orange;
+}
+
+.peg.purple {
+  background-color: purple;
+}

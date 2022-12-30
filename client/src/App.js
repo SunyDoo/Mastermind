@@ -1,18 +1,10 @@
-import { useState, useEffect } from "react";
-import Game from "./components/Game";
+import React from "react";
+import Board from "./components/Board/Board";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
-
   return (
     <div className="App">
-      <Game/>
+      <Board />
     </div>
   );
 }

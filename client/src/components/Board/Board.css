@@ -1,0 +1,17 @@
+.game-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.color-board {
+  grid-column: 1;
+  grid-row: 2 / 5;
+}
+
+.game-board {
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+  
+}
