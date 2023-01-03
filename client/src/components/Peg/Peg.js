@@ -20,6 +20,7 @@ function Peg({ currentColor, answer }) {
 
   function handleClick(e) {
     e.preventDefault();
+
     let guess = [className1, className2, className3, className4];
     // console.log("guess", guess);
     // console.log("answer", answer)
@@ -63,9 +64,9 @@ function Peg({ currentColor, answer }) {
         className={className4}
         onClick={() => setClassName4(currentColor)}
       ></div>
-      <button onClick={handleClick}>Check</button>
+      <button onClick={handleClick} disabled = {clue}>{!clue? "Check" : null}</button>
       <div className="clue-container">
-        {clue?
+        {clue? 
         <div>
         <small>Incorrect:{incorrect}</small>
         <br></br>

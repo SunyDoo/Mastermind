@@ -4,9 +4,9 @@ import Peg from "../Peg/Peg";
 import "./Board.css";
 
 function Board() {
-  const [currentColor, setCurrentColor] = useState("red");
-  const [attempts, setAttempts] = useState(10);
-  const [answer, setAnswer] = useState(['blue', 'green', 'orange', 'red'])
+  const [currentColor, setCurrentColor] = useState("white");
+  // const [attempts, setAttempts] = useState(10);
+  const [answer, setAnswer] = useState(["blue", "green", "orange", "red"]);
 
   return (
     <div className="game-wrapper">
@@ -17,20 +17,20 @@ function Board() {
         <div className="select-box">
           <div className={currentColor}></div>
         </div>
-        <p>Attempts remaining: {attempts} </p>
+        {/* <p>Attempts remaining: {attempts} </p> */}
       </div>
       <div className="game-board">
         <h1>MasterMind</h1>
-        <Peg currentColor={currentColor} answer={answer}/>
-        {/* <Peg />
-          <Peg />
-          <Peg />
-          <Peg />
-          <Peg />
-          <Peg />
-          <Peg />
-          <Peg />
-          <Peg /> */}
+        <Peg currentColor={currentColor} answer={answer} />
+        <Peg currentColor={currentColor} answer={answer} />
+        <Peg currentColor={currentColor} answer={answer} />
+        <Peg currentColor={currentColor} answer={answer} />
+        <Peg currentColor={currentColor} answer={answer} />
+        <Peg currentColor={currentColor} answer={answer} />
+        <Peg currentColor={currentColor} answer={answer} />
+        <Peg currentColor={currentColor} answer={answer} />
+        <Peg currentColor={currentColor} answer={answer} />
+        <Peg currentColor={currentColor} answer={answer} />
       </div>
     </div>
   );
