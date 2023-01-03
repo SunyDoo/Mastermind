@@ -11,11 +11,38 @@ function Peg({ currentColor, answer }) {
     className3,
     className4,
   ]);
+  const [clue, setClue] = useState(false)
+  const [correctInCorrectSpot, setCorrectInCorrectSpot] = useState(0);
+  const [correctInIncorrectSpot, setCorrectInIncorrectSpot] = useState(0);
+  const [incorrect, setIncorrect] = useState(0);
+
+
 
   function handleClick(e) {
     e.preventDefault();
     let guess = [className1, className2, className3, className4];
-    console.log(guess);
+    // console.log("guess", guess);
+    // console.log("answer", answer)
+    let wrong = 0;
+    let rightInWrongSpot = 0;
+    let right = 0;
+    
+    for (let i = 0; i < guess.length; i++) {
+      if (guess[i] === answer[i]) {
+        right++;
+      } else if (answer.includes(guess[i])) {
+        rightInWrongSpot++;
+      } else {
+        wrong++;
+      }
+    }
+    setClue(true)
+    setCorrectInCorrectSpot(right);
+    setCorrectInIncorrectSpot(rightInWrongSpot);
+    setIncorrect(wrong)
+    // console.log("correctInCorrectSpot", correctInCorrectSpot)
+    // console.log("correctInIncorrectSpot", correctInIncorrectSpot)
+    // console.log("incorrect", incorrect)
   }
 
   return (
@@ -38,10 +65,17 @@ function Peg({ currentColor, answer }) {
       ></div>
       <button onClick={handleClick}>Check</button>
       <div className="clue-container">
-        <div className="white"></div>
-        <div className="white"></div>
-        <div className="white"></div>
-        <div className="white"></div>
+        {clue?
+        <div>
+        <small>Incorrect:{incorrect}</small>
+        <br></br>
+        <small>Correct:{correctInCorrectSpot}</small>
+        <br></br>
+        <small>Wrong Spot:{correctInIncorrectSpot}</small>
+        </div>
+         : null
+        }
+        
       </div>
     </div>
   );

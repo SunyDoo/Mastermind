@@ -41,9 +41,9 @@
 
 .clue-container {
   display: grid;
-  grid-template-columns: repeat(2, 35px);
-  grid-template-rows: repeat(2, 35px);
-  grid-gap: 5px;
+  grid-template-columns: repeat(2, 30px);
+  grid-template-rows: repeat(3, 30px);
+  grid-gap: 3px;
 }
 .box {
   background-color: #333;
