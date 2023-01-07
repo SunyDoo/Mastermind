@@ -20,7 +20,6 @@ function Peg({ currentColor, answer, addPeg, decrementAttempts }) {
     e.preventDefault();
 
     let guess = [className1, className2, className3, className4];
-    // console.log("guess", guess);
     console.log("answer", answer);
     let wrong = 0;
     let rightInWrongSpot = 0;

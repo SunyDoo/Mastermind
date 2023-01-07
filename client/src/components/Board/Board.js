@@ -9,10 +9,8 @@ function Board() {
   const [randomNum, setRandomNum] = useState([]);
   const [pegCount, setPegCount] = useState(1);
   const [attempts, setAttempts] = useState(10);
-  
 
   // const [pegs, setPegs] = useState([]);
-
 
   useEffect(() => {
     fetch(
@@ -68,46 +66,101 @@ function Board() {
   }
 
   return (
-    <div className="game-wrapper">
-      <div className="color-board">
-        <h2>Select Color</h2>
-        <ColorBoard handleClick={setCurrentColor} />
-        <p>Selected Color: </p>
-        <div className="select-box">
-          <div className={currentColor}></div>
+    <div>
+        <button>Rules</button>
+        <button>High Scores</button>
+      <div className="game-wrapper">
+        <div className="color-board">
+          <h2>Select Color</h2>
+          <ColorBoard handleClick={setCurrentColor} />
+          <p>Selected Color: </p>
+          <div className="select-box">
+            <div className={currentColor}></div>
+          </div>
+          <p>Attempts remaining: {attempts} </p>
         </div>
-        <p>Attempts remaining: {attempts} </p>
-      </div>
-      <div className="game-board">
-        <h1>MasterMind</h1>
-        <Peg disabled currentColor={currentColor} answer={answer} addPeg={addPeg} decrementAttempts={decrementAttempts} />
-        {pegCount >= 2 ? (
-          <Peg currentColor={currentColor} answer={answer} addPeg={addPeg} decrementAttempts={decrementAttempts} />
-        ) : null}
-        {pegCount >= 3 ? (
-          <Peg currentColor={currentColor} answer={answer} addPeg={addPeg} decrementAttempts={decrementAttempts} />
-        ) : null}
-        {pegCount >= 4 ? (
-          <Peg currentColor={currentColor} answer={answer} addPeg={addPeg} decrementAttempts={decrementAttempts} />
-        ) : null}
-        {pegCount >= 5 ? (
-          <Peg currentColor={currentColor} answer={answer} addPeg={addPeg} decrementAttempts={decrementAttempts} />
-        ) : null}
-        {pegCount >= 6 ? (
-          <Peg currentColor={currentColor} answer={answer} addPeg={addPeg} decrementAttempts={decrementAttempts} />
-        ) : null}
-        {pegCount >= 7 ? (
-          <Peg currentColor={currentColor} answer={answer} addPeg={addPeg} decrementAttempts={decrementAttempts} />
-        ) : null}
-        {pegCount >= 8 ? (
-          <Peg currentColor={currentColor} answer={answer} addPeg={addPeg} decrementAttempts={decrementAttempts} />
-        ) : null}
-        {pegCount >= 9 ? (
-          <Peg currentColor={currentColor} answer={answer} addPeg={addPeg} decrementAttempts={decrementAttempts} />
-        ) : null}
-        {pegCount >= 10 ? (
-          <Peg currentColor={currentColor} answer={answer} addPeg={addPeg} decrementAttempts={decrementAttempts} />
-        ) : null}
+        <div className="game-board">
+          <h1>MasterMind</h1>
+          <Peg
+            disabled
+            currentColor={currentColor}
+            answer={answer}
+            addPeg={addPeg}
+            decrementAttempts={decrementAttempts}
+          />
+          {pegCount >= 2 ? (
+            <Peg
+              currentColor={currentColor}
+              answer={answer}
+              addPeg={addPeg}
+              decrementAttempts={decrementAttempts}
+            />
+          ) : null}
+          {pegCount >= 3 ? (
+            <Peg
+              currentColor={currentColor}
+              answer={answer}
+              addPeg={addPeg}
+              decrementAttempts={decrementAttempts}
+            />
+          ) : null}
+          {pegCount >= 4 ? (
+            <Peg
+              currentColor={currentColor}
+              answer={answer}
+              addPeg={addPeg}
+              decrementAttempts={decrementAttempts}
+            />
+          ) : null}
+          {pegCount >= 5 ? (
+            <Peg
+              currentColor={currentColor}
+              answer={answer}
+              addPeg={addPeg}
+              decrementAttempts={decrementAttempts}
+            />
+          ) : null}
+          {pegCount >= 6 ? (
+            <Peg
+              currentColor={currentColor}
+              answer={answer}
+              addPeg={addPeg}
+              decrementAttempts={decrementAttempts}
+            />
+          ) : null}
+          {pegCount >= 7 ? (
+            <Peg
+              currentColor={currentColor}
+              answer={answer}
+              addPeg={addPeg}
+              decrementAttempts={decrementAttempts}
+            />
+          ) : null}
+          {pegCount >= 8 ? (
+            <Peg
+              currentColor={currentColor}
+              answer={answer}
+              addPeg={addPeg}
+              decrementAttempts={decrementAttempts}
+            />
+          ) : null}
+          {pegCount >= 9 ? (
+            <Peg
+              currentColor={currentColor}
+              answer={answer}
+              addPeg={addPeg}
+              decrementAttempts={decrementAttempts}
+            />
+          ) : null}
+          {pegCount >= 10 ? (
+            <Peg
+              currentColor={currentColor}
+              answer={answer}
+              addPeg={addPeg}
+              decrementAttempts={decrementAttempts}
+            />
+          ) : null}
+        </div>
       </div>
     </div>
   );
