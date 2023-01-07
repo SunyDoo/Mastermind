@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "./Peg.css";
-function Peg({ currentColor, answer }) {
+function Peg({ currentColor, answer, addPeg }) {
   const [className1, setClassName1] = useState("white");
   const [className2, setClassName2] = useState("white");
   const [className3, setClassName3] = useState("white");
   const [className4, setClassName4] = useState("white");
-  const [guess, setGuess] = useState([
-    className1,
-    className2,
-    className3,
-    className4,
-  ]);
+  // const [guess, setGuess] = useState([
+  //   className1,
+  //   className2,
+  //   className3,
+  //   className4,
+  // ]);
   const [clue, setClue] = useState(false);
   const [correctInCorrectSpot, setCorrectInCorrectSpot] = useState(0);
   const [correctInIncorrectSpot, setCorrectInIncorrectSpot] = useState(0);
@@ -21,7 +21,7 @@ function Peg({ currentColor, answer }) {
 
     let guess = [className1, className2, className3, className4];
     // console.log("guess", guess);
-    // console.log("answer", answer)
+    console.log("answer", answer)
     let wrong = 0;
     let rightInWrongSpot = 0;
     let right = 0;
@@ -39,13 +39,16 @@ function Peg({ currentColor, answer }) {
     setCorrectInCorrectSpot(right);
     setCorrectInIncorrectSpot(rightInWrongSpot);
     setIncorrect(wrong);
+    addPeg()
     // console.log("correctInCorrectSpot", correctInCorrectSpot)
     // console.log("correctInIncorrectSpot", correctInIncorrectSpot)
     // console.log("incorrect", incorrect)
   }
 
   return (
+    <div>
     <div className="guess-board">
+      
       <div
         className={className1}
         onClick={() => setClassName1(currentColor)}
@@ -76,6 +79,7 @@ function Peg({ currentColor, answer }) {
           </div>
         ) : null}
       </div>
+    </div>
     </div>
   );
 }
