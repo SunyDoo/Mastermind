@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import ColorBoard from "../ColorBoard/ColorBoard";
 import Peg from "../Peg/Peg";
 import "./Board.css";
+import WinScreen from "../WinScreen/WinScreen";
+import LoseScreen from "../LoseScreen/LoseScreen";
 
 function Board() {
   const [currentColor, setCurrentColor] = useState("white");
@@ -9,6 +11,9 @@ function Board() {
   const [randomNum, setRandomNum] = useState([]);
   const [pegCount, setPegCount] = useState(1);
   const [attempts, setAttempts] = useState(10);
+  const [playerCorrect, setPlayerCorrect] = useState("");
+  const [openWinScreen, setOpenWinScreen] = useState(false);
+  // const [openLoseScreen, setOpenLoseScreen] = useState(false);
 
   // const [pegs, setPegs] = useState([]);
 
@@ -44,18 +49,10 @@ function Board() {
         return "purple";
       } else if (number === 7) {
         return "gray";
-      }
+      } else return null;
     });
     setAnswer(colorArray);
   }, [randomNum]);
-
-  //  function pushPeg(){
-  //     for (let i = 0; i < pegCount; i++) {
-  //       setPegs(pegs.push(
-  //         <Peg currentColor={currentColor} answer={answer} addPeg={addPeg}/>
-  //       ));
-  //     }
-  //   }
 
   function addPeg() {
     setPegCount((pegCount) => pegCount + 1);
@@ -65,11 +62,34 @@ function Board() {
     setAttempts((attempts) => attempts - 1);
   }
 
+  function didPlayerWin(num) {
+    setPlayerCorrect(num);
+    checkWin(num);
+  }
+
+  function checkWin(num) {
+    if (num === 4) setOpenWinScreen(true);
+  }
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   return (
     <div>
-        <button>Rules</button>
-        <button>High Scores</button>
+      <button>Rules</button>
+      <button>High Scores</button>
       <div className="game-wrapper">
+        {openWinScreen && (
+          <WinScreen
+            refreshPage={refreshPage}
+            setOpenWinScreen={setOpenWinScreen}
+            attempts={attempts}
+          />
+        )}
+        {pegCount >= 11 && !openWinScreen && (
+          <LoseScreen refreshPage={refreshPage} />
+        )}
         <div className="color-board">
           <h2>Select Color</h2>
           <ColorBoard handleClick={setCurrentColor} />
@@ -87,6 +107,7 @@ function Board() {
             answer={answer}
             addPeg={addPeg}
             decrementAttempts={decrementAttempts}
+            didPlayerWin={didPlayerWin}
           />
           {pegCount >= 2 ? (
             <Peg
@@ -94,6 +115,7 @@ function Board() {
               answer={answer}
               addPeg={addPeg}
               decrementAttempts={decrementAttempts}
+              didPlayerWin={didPlayerWin}
             />
           ) : null}
           {pegCount >= 3 ? (
@@ -102,6 +124,7 @@ function Board() {
               answer={answer}
               addPeg={addPeg}
               decrementAttempts={decrementAttempts}
+              didPlayerWin={didPlayerWin}
             />
           ) : null}
           {pegCount >= 4 ? (
@@ -110,6 +133,7 @@ function Board() {
               answer={answer}
               addPeg={addPeg}
               decrementAttempts={decrementAttempts}
+              didPlayerWin={didPlayerWin}
             />
           ) : null}
           {pegCount >= 5 ? (
@@ -118,6 +142,7 @@ function Board() {
               answer={answer}
               addPeg={addPeg}
               decrementAttempts={decrementAttempts}
+              didPlayerWin={didPlayerWin}
             />
           ) : null}
           {pegCount >= 6 ? (
@@ -126,6 +151,7 @@ function Board() {
               answer={answer}
               addPeg={addPeg}
               decrementAttempts={decrementAttempts}
+              didPlayerWin={didPlayerWin}
             />
           ) : null}
           {pegCount >= 7 ? (
@@ -134,6 +160,7 @@ function Board() {
               answer={answer}
               addPeg={addPeg}
               decrementAttempts={decrementAttempts}
+              didPlayerWin={didPlayerWin}
             />
           ) : null}
           {pegCount >= 8 ? (
@@ -142,6 +169,7 @@ function Board() {
               answer={answer}
               addPeg={addPeg}
               decrementAttempts={decrementAttempts}
+              didPlayerWin={didPlayerWin}
             />
           ) : null}
           {pegCount >= 9 ? (
@@ -150,6 +178,7 @@ function Board() {
               answer={answer}
               addPeg={addPeg}
               decrementAttempts={decrementAttempts}
+              didPlayerWin={didPlayerWin}
             />
           ) : null}
           {pegCount >= 10 ? (
@@ -158,6 +187,7 @@ function Board() {
               answer={answer}
               addPeg={addPeg}
               decrementAttempts={decrementAttempts}
+              didPlayerWin={didPlayerWin}
             />
           ) : null}
         </div>

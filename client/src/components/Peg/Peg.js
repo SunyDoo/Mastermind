@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Peg.css";
-function Peg({ currentColor, answer, addPeg, decrementAttempts }) {
+function Peg({ currentColor, answer, addPeg, decrementAttempts, didPlayerWin }) {
   const [className1, setClassName1] = useState("white");
   const [className2, setClassName2] = useState("white");
   const [className3, setClassName3] = useState("white");
@@ -40,6 +40,7 @@ function Peg({ currentColor, answer, addPeg, decrementAttempts }) {
     setIncorrect(wrong);
     addPeg();
     decrementAttempts();
+    didPlayerWin(right)
     // console.log("correctInCorrectSpot", correctInCorrectSpot)
     // console.log("correctInIncorrectSpot", correctInIncorrectSpot)
     // console.log("incorrect", incorrect)
