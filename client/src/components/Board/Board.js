@@ -4,6 +4,7 @@ import Peg from "../Peg/Peg";
 import "./Board.css";
 import WinScreen from "../WinScreen/WinScreen";
 import LoseScreen from "../LoseScreen/LoseScreen";
+import Rules from "../Rules/Rules";
 
 function Board() {
   const [currentColor, setCurrentColor] = useState("white");
@@ -13,6 +14,7 @@ function Board() {
   const [attempts, setAttempts] = useState(10);
   const [playerCorrect, setPlayerCorrect] = useState("");
   const [openWinScreen, setOpenWinScreen] = useState(false);
+  const [openRules, setOpenRules] = useState(false);
 
 
   useEffect(() => {
@@ -75,9 +77,14 @@ function Board() {
 
   return (
     <div>
-      <button>Rules</button>
+      <button disabled={openRules} onClick={()=> setOpenRules(true)}>Rules</button>
       <button>High Scores</button>
       <div className="game-wrapper">
+        {openRules && (
+          <Rules
+            setOpenRules={setOpenRules}
+          />
+        )}
         {openWinScreen && (
           <WinScreen
             refreshPage={refreshPage}
