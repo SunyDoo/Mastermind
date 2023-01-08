@@ -13,7 +13,6 @@
 .game-board {
   grid-column: 2 / 4;
   grid-row: 1 / 3;
-  
 }
 
 .select-box {
@@ -21,7 +20,6 @@
   grid-template-columns: repeat(1, 80px);
   grid-template-rows: repeat(1, 80px);
   grid-gap: 5px;
-  
 }
 
 .red {

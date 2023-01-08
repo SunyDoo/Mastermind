@@ -16,7 +16,6 @@ function Board() {
   const [openWinScreen, setOpenWinScreen] = useState(false);
   const [openRules, setOpenRules] = useState(false);
 
-
   useEffect(() => {
     fetch(
       "https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new"
@@ -76,15 +75,14 @@ function Board() {
   }
 
   return (
-    <div>
-      <button disabled={openRules} onClick={()=> setOpenRules(true)}>Rules</button>
+    <div style={{ margin: "5rem" }}>
+      <button disabled={openRules} onClick={() => setOpenRules(true)}>
+        Rules
+      </button>
       <button>High Scores</button>
+
       <div className="game-wrapper">
-        {openRules && (
-          <Rules
-            setOpenRules={setOpenRules}
-          />
-        )}
+        {openRules && <Rules setOpenRules={setOpenRules} />}
         {openWinScreen && (
           <WinScreen
             refreshPage={refreshPage}
@@ -95,15 +93,7 @@ function Board() {
         {pegCount >= 11 && !openWinScreen && (
           <LoseScreen refreshPage={refreshPage} />
         )}
-        <div className="color-board">
-          <h2>Select Color</h2>
-          <ColorBoard handleClick={setCurrentColor} />
-          <p>Selected Color: </p>
-          <div className="select-box">
-            <div className={currentColor}></div>
-          </div>
-          <p>Attempts remaining: {attempts} </p>
-        </div>
+
         <div className="game-board">
           <h1>MasterMind</h1>
           <Peg
@@ -195,6 +185,15 @@ function Board() {
               didPlayerWin={didPlayerWin}
             />
           ) : null}
+        </div>
+        <div className="color-board">
+          <h2>Select Color</h2>
+          <ColorBoard handleClick={setCurrentColor} />
+          <p>Selected Color: </p>
+          <div className="select-box">
+            <div className={currentColor}></div>
+          </div>
+          <p>Attempts remaining: {attempts} </p>
         </div>
       </div>
     </div>
