@@ -75,7 +75,7 @@ function Board() {
   }
 
   return (
-    <div style={{ margin: "5rem" }}>
+    <div style={{ padding: "10px", margin: "5rem" }}>
       <button disabled={openRules} onClick={() => setOpenRules(true)}>
         Rules
       </button>
