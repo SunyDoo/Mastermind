@@ -13,9 +13,7 @@ function Board() {
   const [attempts, setAttempts] = useState(10);
   const [playerCorrect, setPlayerCorrect] = useState("");
   const [openWinScreen, setOpenWinScreen] = useState(false);
-  // const [openLoseScreen, setOpenLoseScreen] = useState(false);
 
-  // const [pegs, setPegs] = useState([]);
 
   useEffect(() => {
     fetch(
