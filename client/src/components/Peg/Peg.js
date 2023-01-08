@@ -39,7 +39,7 @@ function Peg({ currentColor, answer, addPeg, decrementAttempts }) {
     setCorrectInIncorrectSpot(rightInWrongSpot);
     setIncorrect(wrong);
     addPeg();
-    decrementAttempts()
+    decrementAttempts();
     // console.log("correctInCorrectSpot", correctInCorrectSpot)
     // console.log("correctInIncorrectSpot", correctInIncorrectSpot)
     // console.log("incorrect", incorrect)
@@ -47,22 +47,26 @@ function Peg({ currentColor, answer, addPeg, decrementAttempts }) {
 
   return (
     <div className="guess-board">
-      <div
+      <button
+        disabled={clue}
         className={className1}
         onClick={() => setClassName1(currentColor)}
-      ></div>
-      <div
+      ></button>
+      <button
+        disabled={clue}
         className={className2}
         onClick={() => setClassName2(currentColor)}
-      ></div>
-      <div
+      ></button>
+      <button
+        disabled={clue}
         className={className3}
         onClick={() => setClassName3(currentColor)}
-      ></div>
-      <div
+      ></button>
+      <button
+        disabled={clue}
         className={className4}
         onClick={() => setClassName4(currentColor)}
-      ></div>
+      ></button>
       <button onClick={handleClick} disabled={clue}>
         {!clue ? "Check" : null}
       </button>
