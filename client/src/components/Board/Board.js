@@ -15,6 +15,20 @@ function Board() {
   const [playerCorrect, setPlayerCorrect] = useState("");
   const [openWinScreen, setOpenWinScreen] = useState(false);
   const [openRules, setOpenRules] = useState(false);
+  const [isActive, setIsActive] = useState(true);
+   const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    let interval = null;
+    if (isActive) {
+      interval = setInterval(() => {
+        setSeconds((seconds) => seconds + 1);
+      }, 1000);
+    } else if (!isActive && seconds !== 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isActive, seconds]);
 
   useEffect(() => {
     fetch(
@@ -67,7 +81,14 @@ function Board() {
   }
 
   function checkWin(num) {
-    if (num === 4) setOpenWinScreen(true);
+    if (num === 4) {
+      setOpenWinScreen(true);
+      recordWin()
+    }
+  }
+
+  function recordWin() {
+    if (setOpenWinScreen) setIsActive(false)
   }
 
   function refreshPage() {
@@ -88,6 +109,7 @@ function Board() {
             refreshPage={refreshPage}
             setOpenWinScreen={setOpenWinScreen}
             attempts={attempts}
+            seconds={seconds}
           />
         )}
         {pegCount >= 11 && !openWinScreen && (
@@ -192,6 +214,7 @@ function Board() {
           <p>Selected Color: </p>
           <div className="select-box">
             <div className={currentColor}></div>
+            <p>{seconds} seconds</p>
           </div>
           <p>Attempts remaining: {attempts} </p>
         </div>
