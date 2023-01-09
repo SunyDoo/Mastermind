@@ -16,7 +16,7 @@ function Board() {
   const [openWinScreen, setOpenWinScreen] = useState(false);
   const [openRules, setOpenRules] = useState(false);
   const [isActive, setIsActive] = useState(true);
-   const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     let interval = null;
@@ -83,12 +83,12 @@ function Board() {
   function checkWin(num) {
     if (num === 4) {
       setOpenWinScreen(true);
-      recordWin()
+      recordWin();
     }
   }
 
   function recordWin() {
-    if (setOpenWinScreen) setIsActive(false)
+    if (setOpenWinScreen) setIsActive(false);
   }
 
   function refreshPage() {
@@ -214,8 +214,8 @@ function Board() {
           <p>Selected Color: </p>
           <div className="select-box">
             <div className={currentColor}></div>
-            <p>{seconds} seconds</p>
           </div>
+          <p>Elapsed Time: {seconds} seconds</p>
           <p>Attempts remaining: {attempts} </p>
         </div>
       </div>
