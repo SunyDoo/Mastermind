@@ -5,6 +5,7 @@ import "./Board.css";
 import WinScreen from "../WinScreen/WinScreen";
 import LoseScreen from "../LoseScreen/LoseScreen";
 import Rules from "../Rules/Rules";
+import ScoreList from "../ScoreList/ScoreList";
 
 function Board() {
   const [currentColor, setCurrentColor] = useState("white");
@@ -14,9 +15,11 @@ function Board() {
   const [attempts, setAttempts] = useState(10);
   const [playerCorrect, setPlayerCorrect] = useState("");
   const [openWinScreen, setOpenWinScreen] = useState(false);
+  const [openScoreList, setOpenScoreList] = useState(false);
   const [openRules, setOpenRules] = useState(false);
   const [isActive, setIsActive] = useState(true);
   const [seconds, setSeconds] = useState(0);
+  const [highScores, setHighScores] = useState([]);
 
   useEffect(() => {
     let interval = null;
@@ -42,6 +45,12 @@ function Board() {
           .map((n) => Number(n))
       )
       .then((arr) => setRandomNum(arr));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/scores")
+      .then((res) => res.json())
+      .then((data) => setHighScores(data));
   }, []);
 
   useEffect(() => {
@@ -95,14 +104,30 @@ function Board() {
     window.location.reload(false);
   }
 
+  function onAddScore(newScore) {
+    const updatedScores = highScores.map((score) => {
+      if (score.id === newScore.id) {
+        return newScore;
+      } else {
+        return score;
+      }
+    });
+    setHighScores(updatedScores);
+    console.log(newScore);
+    console.log(highScores);
+  }
+
   return (
     <div style={{ padding: "10px", margin: "5rem" }}>
       <button disabled={openRules} onClick={() => setOpenRules(true)}>
         Rules
       </button>
-      <button>High Scores</button>
+      <button disabled={openScoreList} onClick={() => setOpenScoreList(true)}>
+        High Scores
+      </button>
 
       <div className="game-wrapper">
+        {openScoreList && <ScoreList highScores={highScores} setOpenScoreList={setOpenScoreList} />}
         {openRules && <Rules setOpenRules={setOpenRules} />}
         {openWinScreen && (
           <WinScreen
@@ -110,6 +135,7 @@ function Board() {
             setOpenWinScreen={setOpenWinScreen}
             attempts={attempts}
             seconds={seconds}
+            onAddScore={onAddScore}
           />
         )}
         {pegCount >= 11 && !openWinScreen && (
