@@ -1,6 +1,6 @@
-.modalBackground {
-  width: 100vw;
-  height: 100vh;
+.modal-Background {
+  width: 75%;
+  height: 75%;
   background-color: rgba(200, 200, 200);
   position: fixed;
   display: flex;
@@ -23,18 +23,6 @@
   display: inline-block;
   text-align: center;
   margin-top: 10px;
-}
-
-.titleCloseBtn {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.titleCloseBtn button {
-  background-color: transparent;
-  border: none;
-  font-size: 25px;
-  cursor: pointer;
 }
 
 .modalContainer .body {
@@ -65,6 +53,3 @@
   cursor: pointer;
 }
 
-#cancelBtn {
-  background-color: crimson;
-}

@@ -3,7 +3,7 @@ import "./LoseScreen.css";
 
 function LoseScreen({ refreshPage }) {
   return (
-    <div className="modalBackground">
+    <div className="modal-Background">
       <div className="modalContainer">
         <div className="title">
           <h1>You Ran Out Of Guesses!</h1>

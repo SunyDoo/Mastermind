@@ -3,7 +3,7 @@ import "./WinScreen.css";
 
 function WinScreen({ refreshPage, attempts }) {
   return (
-    <div className="modalBackground">
+    <div className="modal-Background">
       <div className="modalContainer">
         <div className="title">
           <h1>Congratulations, You Win!</h1>
