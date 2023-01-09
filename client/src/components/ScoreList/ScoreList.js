@@ -11,13 +11,13 @@ function ScoreList({ setOpenScoreList, highScores }) {
     }
   });
 
-  const top10Scores = sortedScores.reverse().slice(0, 10);
+  const top10Scores = sortedScores.reverse().slice(0, 5);
 
   return (
     <div className="modal-Background">
       <div className="modalContainer">
         <div className="title">
-          <h1>High Scores</h1>
+          <h1>Top 5 High Scores</h1>
         </div>
         <div className="body">
           <table>
