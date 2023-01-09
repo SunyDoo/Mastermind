@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "./Peg.css";
-function Peg({ currentColor, answer, addPeg, decrementAttempts, didPlayerWin }) {
+function Peg({
+  currentColor,
+  answer,
+  addPeg,
+  decrementAttempts,
+  didPlayerWin,
+}) {
   const [className1, setClassName1] = useState("white");
   const [className2, setClassName2] = useState("white");
   const [className3, setClassName3] = useState("white");
   const [className4, setClassName4] = useState("white");
-  // const [guess, setGuess] = useState([
-  //   className1,
-  //   className2,
-  //   className3,
-  //   className4,
-  // ]);
   const [clue, setClue] = useState(false);
   const [correctInCorrectSpot, setCorrectInCorrectSpot] = useState(0);
   const [correctInIncorrectSpot, setCorrectInIncorrectSpot] = useState(0);
@@ -28,7 +28,7 @@ function Peg({ currentColor, answer, addPeg, decrementAttempts, didPlayerWin }) 
     for (let i = 0; i < guess.length; i++) {
       if (guess[i] === answer[i]) {
         right++;
-      } else if (answer.includes(guess[i])) {
+      } else if (answer.includes(guess[i]) && guess[i] !== answer[i]) {
         rightInWrongSpot++;
       } else {
         wrong++;
@@ -40,7 +40,7 @@ function Peg({ currentColor, answer, addPeg, decrementAttempts, didPlayerWin }) 
     setIncorrect(wrong);
     addPeg();
     decrementAttempts();
-    didPlayerWin(right)
+    didPlayerWin(right);
     // console.log("correctInCorrectSpot", correctInCorrectSpot)
     // console.log("correctInIncorrectSpot", correctInIncorrectSpot)
     // console.log("incorrect", incorrect)
