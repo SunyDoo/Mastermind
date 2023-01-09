@@ -13,7 +13,7 @@ function Scores({ onAddScore, attempts, seconds }) {
       time: seconds,
     };
     console.log("first", score);
-    fetch("http://localhost:3000/scores", {
+    fetch("/scores", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

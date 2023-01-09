@@ -48,7 +48,7 @@ function Board() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/scores")
+    fetch("/scores")
       .then((res) => res.json())
       .then((data) => setHighScores(data));
   }, []);
@@ -127,7 +127,12 @@ function Board() {
       </button>
 
       <div className="game-wrapper">
-        {openScoreList && <ScoreList highScores={highScores} setOpenScoreList={setOpenScoreList} />}
+        {openScoreList && (
+          <ScoreList
+            highScores={highScores}
+            setOpenScoreList={setOpenScoreList}
+          />
+        )}
         {openRules && <Rules setOpenRules={setOpenRules} />}
         {openWinScreen && (
           <WinScreen
