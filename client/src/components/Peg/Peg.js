@@ -12,38 +12,45 @@ function Peg({
   const [className3, setClassName3] = useState("white");
   const [className4, setClassName4] = useState("white");
   const [clue, setClue] = useState(false);
-  const [correctInCorrectSpot, setCorrectInCorrectSpot] = useState(0);
-  const [correctInIncorrectSpot, setCorrectInIncorrectSpot] = useState(0);
-  const [incorrect, setIncorrect] = useState(0);
+  const [hint, setHint] = useState("");
 
   function handleClick(e) {
     e.preventDefault();
 
     let guess = [className1, className2, className3, className4];
     console.log("answer", answer);
-    let wrong = 0;
-    let rightInWrongSpot = 0;
-    let right = 0;
+    let correctColors = 0;
+    let correctPositions = 0;
+    let answerCopy = [...answer];
 
     for (let i = 0; i < guess.length; i++) {
-      if (guess[i] === answer[i]) {
-        right++;
-      } else if (answer.includes(guess[i]) && guess[i] !== answer[i]) {
-        rightInWrongSpot++;
-      } else {
-        wrong++;
+      if (guess[i] === answerCopy[i]) {
+        correctColors++;
+        correctPositions++;
+      } else if (answerCopy.includes(guess[i])) {
+        correctColors++;
+        let index = answerCopy.indexOf(guess[i]);
+
+        if (index > -1) {
+          answerCopy.splice(index, 1);
+        }
       }
     }
+
+    let response = "";
+    if (correctPositions === 4) {
+      response += "You win!";
+    } else if (correctColors === 0) {
+      response += "all incorrect";
+    } else
+      response += `Correct:${correctPositions}, Partial:${
+        correctColors - correctPositions
+      }`;
+    setHint(response);
     setClue(true);
-    setCorrectInCorrectSpot(right);
-    setCorrectInIncorrectSpot(rightInWrongSpot);
-    setIncorrect(wrong);
     addPeg();
     decrementAttempts();
-    didPlayerWin(right);
-    // console.log("correctInCorrectSpot", correctInCorrectSpot)
-    // console.log("correctInIncorrectSpot", correctInIncorrectSpot)
-    // console.log("incorrect", incorrect)
+    didPlayerWin(response);
   }
 
   return (
@@ -74,11 +81,7 @@ function Peg({
       <div className="clue-container">
         {clue ? (
           <div>
-            <small>Incorrect:{incorrect}</small>
-            <br></br>
-            <small>Correct:{correctInCorrectSpot}</small>
-            <br></br>
-            <small>Partial:{correctInIncorrectSpot}</small>
+            <small>{hint}</small>
           </div>
         ) : null}
       </div>

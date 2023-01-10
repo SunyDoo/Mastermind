@@ -13,7 +13,6 @@ function Board() {
   const [randomNum, setRandomNum] = useState([]);
   const [pegCount, setPegCount] = useState(1);
   const [attempts, setAttempts] = useState(10);
-  const [playerCorrect, setPlayerCorrect] = useState("");
   const [openWinScreen, setOpenWinScreen] = useState(false);
   const [openScoreList, setOpenScoreList] = useState(false);
   const [openRules, setOpenRules] = useState(false);
@@ -84,13 +83,9 @@ function Board() {
     setAttempts((attempts) => attempts - 1);
   }
 
-  function didPlayerWin(num) {
-    setPlayerCorrect(num);
-    checkWin(num);
-  }
 
-  function checkWin(num) {
-    if (num === 4) {
+  function didPlayerWin(str) {
+    if (str === "You win!") {
       setOpenWinScreen(true);
       recordWin();
     }

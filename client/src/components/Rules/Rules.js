@@ -18,8 +18,7 @@ function Rules({ setOpenRules }) {
             whether you are close to the correct answer.
           </p>
           <p>
-            "Incorrect" refers to the number of colors that are not in the
-            answer pattern at all.
+            If all colors are incorrect then "all incorrect" will be displayed.
           </p>
           <p>
             "Correct" refers to the number of colors that are correct and also
