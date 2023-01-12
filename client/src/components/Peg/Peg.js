@@ -21,15 +21,14 @@ function Peg({
     console.log("answer", answer);
     let correctColors = 0;
     let correctPositions = 0;
-    let answerCopy = [...answer];
+    // let answerCopy = [...answer];
 
     for (let i = 0; i < guess.length; i++) {
-      if (guess[i] === answerCopy[i]) {
+      if (guess[i] === answer[i]) {
         correctColors++;
         correctPositions++;
-      } else if (answerCopy.includes(guess[i])) {
+      } else if (answer.includes(guess[i])) {
         correctColors++;
-        
       }
     }
 
