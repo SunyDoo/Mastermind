@@ -29,11 +29,7 @@ function Peg({
         correctPositions++;
       } else if (answerCopy.includes(guess[i])) {
         correctColors++;
-        let index = answerCopy.indexOf(guess[i]);
-
-        if (index > -1) {
-          answerCopy.splice(index, 1);
-        }
+        
       }
     }
 
