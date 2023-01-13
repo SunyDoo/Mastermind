@@ -21,14 +21,22 @@ function Peg({
     console.log("answer", answer);
     let correctColors = 0;
     let correctPositions = 0;
-    // let answerCopy = [...answer];
+    let answerCopy = [...answer];
 
     for (let i = 0; i < guess.length; i++) {
       if (guess[i] === answer[i]) {
-        correctColors++;
         correctPositions++;
-      } else if (answer.includes(guess[i])) {
+      }
+    }
+
+    for (let i = 0; i < guess.length; i++) {
+      if (answerCopy.includes(guess[i])) {
         correctColors++;
+        let index = answerCopy.indexOf(guess[i]);
+
+        if (index > -1) {
+          answerCopy.splice(index, 1, "x");
+        }
       }
     }
 
@@ -37,10 +45,7 @@ function Peg({
       response += "You win!";
     } else if (correctColors === 0) {
       response += "all incorrect";
-    } else
-      response += `Correct:${correctPositions}, Partial:${
-        correctColors - correctPositions
-      }`;
+    } else response += `Correct:${correctPositions}, Partial:${correctColors - correctPositions}`;
     setHint(response);
     setClue(true);
     addPeg();
