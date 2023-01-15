@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ColorBoard from "../ColorBoard/ColorBoard";
-import Peg from "../Peg/Peg";
+// import Peg from "../Peg/Peg";
 import "./Board.css";
 import WinScreen from "../WinScreen/WinScreen";
 import LoseScreen from "../LoseScreen/LoseScreen";
 import Rules from "../Rules/Rules";
 import ScoreList from "../ScoreList/ScoreList";
+import PegBoard from "../PegBoard/PegBoard";
 
 function Board() {
   const [currentColor, setCurrentColor] = useState("white");
@@ -104,14 +105,15 @@ function Board() {
   }
 
   return (
-    <div style={{ padding: "10px", margin: "5rem" }}>
-      <button disabled={openRules} onClick={() => setOpenRules(true)}>
-        Rules
-      </button>
-      <button disabled={openScoreList} onClick={() => setOpenScoreList(true)}>
-        High Scores
-      </button>
-
+    <>
+      <div style={{ padding: "10px", margin: "5rem" }}>
+        <button disabled={openRules} onClick={() => setOpenRules(true)}>
+          Rules
+        </button>
+        <button disabled={openScoreList} onClick={() => setOpenScoreList(true)}>
+          High Scores
+        </button>
+      </div>
       <div className="game-wrapper">
         {openScoreList && (
           <ScoreList
@@ -132,110 +134,38 @@ function Board() {
         {pegCount >= 11 && !openWinScreen && (
           <LoseScreen refreshPage={refreshPage} />
         )}
+      <div className="color-board">
+        <h2>Select Color</h2>
+        <ColorBoard handleClick={setCurrentColor} />
+        <p>Selected Color: </p>
+        <div className="select-box">
+          <div className={currentColor}></div>
+        </div>
+        <p>Elapsed Time: {seconds} seconds</p>
+        <p>Attempts remaining: {attempts} </p>
+      </div>
+      <div
+        style={{
+          padding: "10px",
+          margin: "5rem",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+      </div>
 
         <div className="game-board">
-          <h1>MasterMind</h1>
-          <Peg
+          <PegBoard
+            pegCount={pegCount}
             currentColor={currentColor}
             answer={answer}
             addPeg={addPeg}
             decrementAttempts={decrementAttempts}
             didPlayerWin={didPlayerWin}
           />
-          {pegCount >= 2 ? (
-            <Peg
-              currentColor={currentColor}
-              answer={answer}
-              addPeg={addPeg}
-              decrementAttempts={decrementAttempts}
-              didPlayerWin={didPlayerWin}
-            />
-          ) : null}
-          {pegCount >= 3 ? (
-            <Peg
-              currentColor={currentColor}
-              answer={answer}
-              addPeg={addPeg}
-              decrementAttempts={decrementAttempts}
-              didPlayerWin={didPlayerWin}
-            />
-          ) : null}
-          {pegCount >= 4 ? (
-            <Peg
-              currentColor={currentColor}
-              answer={answer}
-              addPeg={addPeg}
-              decrementAttempts={decrementAttempts}
-              didPlayerWin={didPlayerWin}
-            />
-          ) : null}
-          {pegCount >= 5 ? (
-            <Peg
-              currentColor={currentColor}
-              answer={answer}
-              addPeg={addPeg}
-              decrementAttempts={decrementAttempts}
-              didPlayerWin={didPlayerWin}
-            />
-          ) : null}
-          {pegCount >= 6 ? (
-            <Peg
-              currentColor={currentColor}
-              answer={answer}
-              addPeg={addPeg}
-              decrementAttempts={decrementAttempts}
-              didPlayerWin={didPlayerWin}
-            />
-          ) : null}
-          {pegCount >= 7 ? (
-            <Peg
-              currentColor={currentColor}
-              answer={answer}
-              addPeg={addPeg}
-              decrementAttempts={decrementAttempts}
-              didPlayerWin={didPlayerWin}
-            />
-          ) : null}
-          {pegCount >= 8 ? (
-            <Peg
-              currentColor={currentColor}
-              answer={answer}
-              addPeg={addPeg}
-              decrementAttempts={decrementAttempts}
-              didPlayerWin={didPlayerWin}
-            />
-          ) : null}
-          {pegCount >= 9 ? (
-            <Peg
-              currentColor={currentColor}
-              answer={answer}
-              addPeg={addPeg}
-              decrementAttempts={decrementAttempts}
-              didPlayerWin={didPlayerWin}
-            />
-          ) : null}
-          {pegCount >= 10 ? (
-            <Peg
-              currentColor={currentColor}
-              answer={answer}
-              addPeg={addPeg}
-              decrementAttempts={decrementAttempts}
-              didPlayerWin={didPlayerWin}
-            />
-          ) : null}
-        </div>
-        <div className="color-board">
-          <h2>Select Color</h2>
-          <ColorBoard handleClick={setCurrentColor} />
-          <p>Selected Color: </p>
-          <div className="select-box">
-            <div className={currentColor}></div>
-          </div>
-          <p>Elapsed Time: {seconds} seconds</p>
-          <p>Attempts remaining: {attempts} </p>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
