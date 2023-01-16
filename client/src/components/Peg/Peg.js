@@ -19,8 +19,8 @@ function Peg({
 
     let guess = [className1, className2, className3, className4];
     console.log("answer", answer);
-    let correctColors = 0;
     let correctPositions = 0;
+    let correctColors = 0;
     let answerCopy = [...answer];
 
     for (let i = 0; i < guess.length; i++) {
