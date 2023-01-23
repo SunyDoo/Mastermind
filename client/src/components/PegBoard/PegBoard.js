@@ -12,6 +12,7 @@ function PegBoard({
 }) {
   return (
     <div className="game-board">
+      <h5>SunyDoo Games Presents</h5>
       <h1>MasterMind</h1>
       <Peg
         currentColor={currentColor}
