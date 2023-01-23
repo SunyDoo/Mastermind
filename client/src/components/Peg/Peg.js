@@ -75,7 +75,7 @@ function Peg({
         className={className4}
         onClick={() => setClassName4(currentColor)}
       ></button>
-      <button onClick={handleClick} disabled={clue}>
+      <button className="check" onClick={handleClick} disabled={clue}>
         {!clue ? "Check" : null}
       </button>
       <div className="clue-container">

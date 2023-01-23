@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ColorBoard from "../ColorBoard/ColorBoard";
 import "./Board.css";
-import WinScreen from "../WinScreen/WinScreen";
+import ColorBoard from "../ColorBoard/ColorBoard";
+import WinScreen2 from "../WinScreen/WinScreen2";
 import LoseScreen from "../LoseScreen/LoseScreen";
 import Rules from "../Rules/Rules";
-import ScoreList from "../ScoreList/ScoreList";
 import PegBoard from "../PegBoard/PegBoard";
+// import ScoreList from "../ScoreList/ScoreList";
 
 function Board() {
   const [currentColor, setCurrentColor] = useState("white");
@@ -14,11 +14,11 @@ function Board() {
   const [pegCount, setPegCount] = useState(1);
   const [attempts, setAttempts] = useState(10);
   const [openWinScreen, setOpenWinScreen] = useState(false);
-  const [openScoreList, setOpenScoreList] = useState(false);
   const [openRules, setOpenRules] = useState(false);
   const [isActive, setIsActive] = useState(true);
   const [seconds, setSeconds] = useState(0);
-  const [highScores, setHighScores] = useState([]);
+  // const [openScoreList, setOpenScoreList] = useState(false);
+  // const [highScores, setHighScores] = useState([]);
 
   useEffect(() => {
     let interval = null;
@@ -46,11 +46,11 @@ function Board() {
       .then((arr) => setRandomNum(arr));
   }, []);
 
-  useEffect(() => {
-    fetch("/scores")
-      .then((res) => res.json())
-      .then((data) => setHighScores(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/scores")
+  //     .then((res) => res.json())
+  //     .then((data) => setHighScores(data));
+  // }, []);
 
   useEffect(() => {
     const colorObj = {
@@ -90,43 +90,42 @@ function Board() {
     window.location.reload(false);
   }
 
-  function onAddScore(newScore) {
-    const updatedScores = highScores.map((score) => {
-      if (score.id === newScore.id) {
-        return newScore;
-      } else {
-        return score;
-      }
-    });
-    setHighScores(updatedScores);
-    console.log(newScore);
-    console.log(highScores);
-  }
+  // function onAddScore(newScore) {
+  //   const updatedScores = highScores.map((score) => {
+  //     if (score.id === newScore.id) {
+  //       return newScore;
+  //     } else {
+  //       return score;
+  //     }
+  //   });
+  //   setHighScores(updatedScores);
+  //   console.log(newScore);
+  //   console.log(highScores);
+  // }
 
   return (
     <div style={{ padding: "10px", margin: "5rem" }}>
-      <button disabled={openRules} onClick={() => setOpenRules(true)}>
+      <button className="rules" disabled={openRules} onClick={() => setOpenRules(true)}>
         Rules
       </button>
-      <button disabled={openScoreList} onClick={() => setOpenScoreList(true)}>
+      {/* <button disabled={openScoreList} onClick={() => setOpenScoreList(true)}>
         High Scores
-      </button>
+      </button> */}
 
       <div className="game-wrapper">
-        {openScoreList && (
+        {/* {openScoreList && (
           <ScoreList
             highScores={highScores}
             setOpenScoreList={setOpenScoreList}
           />
-        )}
+        )} */}
         {openRules && <Rules setOpenRules={setOpenRules} />}
         {openWinScreen && (
-          <WinScreen
+          <WinScreen2
             refreshPage={refreshPage}
             setOpenWinScreen={setOpenWinScreen}
             attempts={attempts}
             seconds={seconds}
-            onAddScore={onAddScore}
           />
         )}
         {pegCount >= 11 && !openWinScreen && (

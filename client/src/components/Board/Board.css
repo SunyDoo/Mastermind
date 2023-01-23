@@ -45,3 +45,16 @@
   border: 3px solid black;
   background-color: black;
 }
+
+.rules {
+  width: 150px;
+  height: 45px;
+  margin: 10px;
+  border: none;
+  background-color: rgb(188, 190, 196);
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+}

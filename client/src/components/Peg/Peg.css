@@ -56,3 +56,13 @@
   font-size: 40px;
   font-family: sans-serif;
 }
+
+.check {
+  border: 3px solid black;
+  background-color: rgb(206, 208, 212);
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+}
