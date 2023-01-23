@@ -1,4 +1,4 @@
-.modal-Background {
+.win-modal-Background {
   width: 75%;
   height: 75%;
   background-color: rgba(200, 200, 200);
@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-.modalContainer {
+.win-modalContainer {
   width: 500px;
   height: 500px;
   border-radius: 12px;
@@ -19,31 +19,28 @@
   padding: 25px;
 }
 
-.modalContainer .title {
+.win-modalContainer .title {
   display: inline-block;
   text-align: center;
   margin-top: 10px;
 }
 
-.modalContainer .-body {
-  flex: 50%;
+.win-modalContainer .body {
   justify-content: center;
   align-items: center;
   font-size: 1rem;
   text-align: center;
-  padding-left:0;
+  padding-left: 0;
 }
 
-
-
-.modalContainer .footer {
+.win-modalContainer .footer {
   flex: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.modalContainer .footer button {
+.win-modalContainer .footer button {
   width: 150px;
   height: 45px;
   margin: 10px;
