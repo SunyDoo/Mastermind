@@ -24,5 +24,3 @@ function WinScreen({ refreshPage, attempts, seconds }) {
 export default WinScreen;
 
 
-{/* <h4>You Guessed Correctly in {10 - attempts} Tries</h4>
-          <h4>in {seconds} Seconds!</h4> */}
